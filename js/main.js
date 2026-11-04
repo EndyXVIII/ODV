@@ -102,35 +102,63 @@
   }
 
   /* ---------- 03 LOADER ---------- */
-  // Il pallone rimbalza sulla linea neon, il tabellone conta 00→25, poi schiacciata in camera e reveal circolare
+  // Il loader resta finché il sito non è COMPLETO (scena 3D con le foto delle card, dati e contenuti).
+  // Il pallone rimbalza sulla linea neon, il tabellone segue l'avanzamento reale fino a 25,
+  // poi schiacciata in camera e reveal circolare. Restituisce { progress(0–1), finish(), done }.
   function runLoader() {
-    return new Promise((resolve) => {
-      const loader = $('#loader');
-      let seen = false;
-      try { seen = sessionStorage.getItem('odv-loader') === '1'; } catch (e) { /* storage non disponibile */ }
-      if (REDUCED || !HAS_GSAP || seen) { loader.classList.add('is-done'); resolve(); return; }
-      try { sessionStorage.setItem('odv-loader', '1'); } catch (e) { /* ok */ }
+    const loader = $('#loader');
+    const score = $('#loaderScore');
+    const hint = $('.loader__hint');
+    let resolveDone;
+    const done = new Promise((r) => { resolveDone = r; });
+    let closed = false;
+    const close = () => { if (closed) return; closed = true; loader.classList.add('is-done'); lockScroll(false); resolveDone(); };
+    let shown = 0;
+    const show = (f) => {
+      const v = Math.min(24, Math.round(f * 24));
+      score.textContent = pad2(v);
+      hint.textContent = f < 1 ? `Preparo il palazzetto… ${Math.round(f * 100)}%` : 'Si gioca!';
+    };
+    lockScroll(true);
 
-      lockScroll(true);
-      const ball = $('#loaderBall');
-      const score = $('#loaderScore');
-      const counter = { v: 0 };
-      const finish = () => { loader.classList.add('is-done'); lockScroll(false); resolve(); };
+    if (!HAS_GSAP || REDUCED) { // nessuna animazione: solo l'avanzamento, poi via
+      return {
+        progress: (f) => { shown = Math.max(shown, f); show(shown); },
+        finish: () => { score.textContent = '25'; close(); },
+        done
+      };
+    }
 
-      const tl = gsap.timeline({ onComplete: finish });
-      tl.to(ball, { y: -140, duration: 0.3, ease: 'power2.out', yoyo: true, repeat: 5 })
-        .to(ball, { rotation: 540, duration: 1.8, ease: 'none' }, 0)
-        .to(counter, { v: 25, duration: 1.8, ease: 'power1.in', onUpdate: () => { score.textContent = pad2(Math.round(counter.v)); } }, 0)
-        .to(ball, { y: -190, scale: 1.2, duration: 0.2, ease: 'power2.out' })
-        .to(ball, { y: 40, scale: 34, rotation: 900, duration: 0.55, ease: 'power3.in' })
-        .to(ball, { autoAlpha: 0, duration: 0.15 }, '-=0.15')
-        .to(loader, { '--r': () => `${Math.hypot(innerWidth, innerHeight)}px`, duration: 0.9, ease: 'power3.inOut' }, '-=0.3');
-
-      // Clic o tasto per saltare
-      const skip = () => { tl.progress(1); };
-      loader.addEventListener('click', skip, { once: true });
-      window.addEventListener('keydown', skip, { once: true });
-    });
+    const ball = $('#loaderBall');
+    const t0 = performance.now();
+    const bounce = gsap.to(ball, { y: -140, duration: 0.3, ease: 'power2.out', yoyo: true, repeat: -1 });
+    const spin = gsap.to(ball, { rotation: '+=360', duration: 0.9, ease: 'none', repeat: -1 });
+    const counter = { v: 0 };
+    const progress = (f) => {
+      if (f <= shown) return;
+      shown = f;
+      gsap.to(counter, { v: f, duration: 0.35, ease: 'power1.out', overwrite: true, onUpdate: () => show(counter.v) });
+    };
+    let finishing = false;
+    const finish = () => {
+      if (finishing) return;
+      finishing = true;
+      const wait = Math.max(0, 700 - (performance.now() - t0)); // almeno un rimbalzo, anche con tutto in cache
+      // rete di sicurezza: se le animazioni sono rallentate (scheda in background) si entra comunque
+      setTimeout(() => { if (!closed) { gsap.killTweensOf([ball, loader, counter]); close(); } }, wait + 3500);
+      gsap.delayedCall(wait / 1000, () => {
+        bounce.kill(); spin.kill();
+        gsap.timeline({ onComplete: close })
+          .to(counter, { v: 1, duration: 0.25, onUpdate: () => show(counter.v) })
+          .call(() => { score.textContent = '25'; })
+          .to(ball, { y: 0, duration: 0.12, ease: 'power2.in' })
+          .to(ball, { y: -190, scale: 1.2, rotation: '+=180', duration: 0.2, ease: 'power2.out' })
+          .to(ball, { y: 40, scale: 34, rotation: '+=360', duration: 0.45, ease: 'power3.in' })
+          .to(ball, { autoAlpha: 0, duration: 0.15 }, '-=0.15')
+          .to(loader, { '--r': () => `${Math.hypot(innerWidth, innerHeight)}px`, duration: 0.7, ease: 'power3.inOut' }, '-=0.3');
+      });
+    };
+    return { progress, finish, done };
   }
 
   /* ---------- 04 HERO: CITTÀ + PIOGGIA ---------- */
@@ -1236,8 +1264,12 @@
     initPartners();
     const ballCtl = initBall();
 
-    const loaderDone = runLoader();
-    loaderDone.then(() => heroIntro(ballCtl)); // l'hero non aspetta i dati (FIPAV può essere lento)
+    // Avanzamento del loader: scena 3D (foto delle card) 70%, dati del sito 30%
+    const loader = runLoader();
+    const prog = { pov: 0, data: 0 };
+    const report = () => loader.progress(prog.pov * 0.7 + prog.data * 0.3);
+    loader.done.then(() => heroIntro(ballCtl));
+
     let data = null;
     try {
       data = await dataPromise;
@@ -1245,13 +1277,21 @@
       console.warn('[ODV] Impossibile caricare i dati JSON. Avvia un server locale (vedi README).', err);
       $('#roster').innerHTML = '<p class="section__lead">Dati non disponibili: apri il sito tramite un server locale (vedi README) per caricare le eroine.</p>';
     }
+    prog.data = 0.4; report();
+    // La scena 3D parte subito con i dati della squadra, in parallelo a FIPAV
+    const povReady = window.ODVPov
+      ? window.ODVPov.init(data && data.team, (f) => { prog.pov = f; report(); }).catch((e) => { console.warn('[ODV] Scena 3D non disponibile.', e); return false; })
+      : Promise.resolve(false);
+    povReady.then(() => performance.mark('odv:pov-pronta')); // tempi misurabili in DevTools → Performance
+
     let live = null;
     if (data && window.ODVFipav) {
-      // FIPAV in diretta; se non risponde in 7 s restano i JSON salvati
-      const timeout = new Promise((resolve) => setTimeout(() => resolve(null), 7000));
+      // FIPAV in diretta; se non risponde in 3,5 s restano i JSON salvati (dopo il primo accesso è in cache)
+      const timeout = new Promise((resolve) => setTimeout(() => resolve(null), 3500));
       live = await Promise.race([window.ODVFipav.refresh(data.matches, data.standings).catch((e) => { console.warn('[ODV] FIPAV non raggiungibile, uso i dati salvati.', e); return null; }), timeout]);
       if (live) { data.matches = live.matches; data.standings = live.standings; }
     }
+    prog.data = 0.8; report();
     const stamp = $('#fipavStamp');
     if (stamp) {
       stamp.classList.toggle('is-live', !!live);
@@ -1273,13 +1313,19 @@
       initContact(data.team);
       initCountdown(matches);
     }
-    if (window.ODVPov) window.ODVPov.init(data && data.team); // POV: sei il pallone (js/pov.js), con le card delle giocatrici
     initMagnetic();
     initRevealFx();
+    prog.data = 1; report();
 
-    await loaderDone;
+    // Si entra solo quando la scena 3D è completa (con un tetto di 15 s, per non restare mai bloccati)
+    await Promise.race([povReady, new Promise((r) => setTimeout(r, 15000))]);
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    if (HAS_ST) ScrollTrigger.refresh();
+    performance.mark('odv:contenuti-pronti');
+    loader.finish();
+    await loader.done;
+    performance.mark('odv:sito-visibile');
     if (HAS_ST) {
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
       window.addEventListener('load', () => ScrollTrigger.refresh());
       ScrollTrigger.refresh();
     }

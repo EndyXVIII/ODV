@@ -156,7 +156,7 @@ Il percorso del pallone si modifica in `KEYS` (posizione e punto guardato per og
 ## Interazioni nascoste
 - Digita **A C E** (fuori dai campi del form) per una pioggia di palloni e l'insegna "ACE!".
 - Il pulsante **Luci del palazzetto** in alto a destra passa alla modalità giorno (la scelta viene ricordata).
-- Il loader viene mostrato una sola volta per sessione; si può saltare con un clic o un tasto.
+- Il loader resta finché il sito non è completo (scena 3D con le foto delle card, dati FIPAV, contenuti) e il tabellone segue l'avanzamento reale. FIPAV viene atteso al massimo 3,5 secondi, poi si usano i dati salvati; per sicurezza il loader si chiude comunque dopo 15 secondi. I tempi si vedono in DevTools → Performance (segni `odv:pov-pronta`, `odv:contenuti-pronti`, `odv:sito-visibile`).
 
 ## Accessibilità e performance
 - `prefers-reduced-motion`: niente loader, smooth scroll, parallax, pioggia né scroll orizzontale fissato; tutto il contenuto resta visibile.

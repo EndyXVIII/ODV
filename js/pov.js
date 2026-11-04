@@ -6,7 +6,8 @@
      → 04 alzata → 05 schiacciata → PUNTO ODV, 25–23.
    Tutto è procedurale (texture disegnate su canvas, materiali "basic"
    neon): niente asset esterni, leggero anche su mobile.
-   Espone window.ODVPov.init(); main.js lo chiama all'avvio.
+   Espone window.ODVPov.init(team, onProgress) → Promise (true quando la scena è completa);
+   main.js tiene il loader finché non è pronta.
    ========================================================= */
 (() => {
   'use strict';
@@ -228,10 +229,25 @@
       tex.needsUpdate = true;
     };
     draw(null);
-    const img = new Image();
-    img.onload = () => draw(img);
-    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { img.src = `assets/players/${slug(surname)}.webp`; });
+    // la foto parte subito; la card è "pronta" quando foto e font sono arrivati (o la foto manca)
+    tex.odvReady = new Promise((resolve) => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => fontsLoaded().then(() => { draw(img); resolve(); });
+      img.onerror = () => fontsLoaded().then(() => { draw(null); resolve(); });
+      img.src = `assets/players/${slug(surname)}.webp`;
+    });
     return tex;
+  }
+  // I font disegnati nelle texture devono essere caricati prima di disegnare (sono locali: è rapido)
+  let fontsPromise = null;
+  function fontsLoaded() {
+    if (!fontsPromise) {
+      fontsPromise = document.fonts
+        ? Promise.all(['62px Anton', '700 20px Orbitron', '600 21px Manrope'].map((f) => document.fonts.load(f))).catch(() => null)
+        : Promise.resolve();
+    }
+    return fontsPromise;
   }
 
   // Chi va in campo: la capitana schiaccia, una palleggiatrice alza, due centrali murano, le altre coprono
@@ -329,8 +345,11 @@
     };
     // ODV: le card delle giocatrici vere (se i dati non ci sono, sagome neon magenta)
     const L = lineup(team);
+    const pending = []; // card ancora in caricamento
     const card = (person, x, z, scale = 1) => {
-      const s = add(new THREE.Sprite(new THREE.SpriteMaterial({ map: cardTexture(person), transparent: true, depthWrite: false })));
+      const map = cardTexture(person);
+      pending.push(map.odvReady); // Promise della card (Three r128: le texture non hanno userData)
+      const s = add(new THREE.Sprite(new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false })));
       s.scale.set(1.44 * scale, 1.8 * scale, 1); s.position.set(x, 0.9 * scale, z); s.userData.baseY = 0.9 * scale; return s;
     };
     const odv = (person, pose, x, z, scale) => (person ? card(person, x, z, scale) : player(pose, PINK, x, z, scale));
@@ -365,23 +384,25 @@
     const glow = add(new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTexture('rgb(255,46,154)'), transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending })));
     glow.position.set(impactAt.x, 0.3, impactAt.z); glow.scale.set(3, 3, 1);
 
-    return { crowdMat, odvSetter, odvHitter, blockerA, blockerB, oppHitter, oppBlocker, hands, serveHand, rings, glow, hitterName: L && L.hitter ? L.hitter.nome : '' };
+    return { crowdMat, odvSetter, odvHitter, blockerA, blockerB, oppHitter, oppBlocker, hands, serveHand, rings, glow, pending, hitterName: L && L.hitter ? L.hitter.nome : '' };
   }
 
   // ---------- ANIMAZIONE ----------
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const bump = (p, a, b) => (p < a || p > b ? 0 : Math.sin(((p - a) / (b - a)) * Math.PI)); // 0→1→0 tra a e b
 
-  function init(team) {
+  // Restituisce una Promise che si risolve quando la scena è COMPLETA: texture disegnate, foto delle card
+  // caricate, shader compilati e primo fotogramma reso. onProgress(0–1) segue il caricamento delle card.
+  async function init(team, onProgress = () => {}) {
     const section = document.getElementById('pov');
     const cvs = document.getElementById('povCanvas');
-    if (!section || !cvs) return;
+    if (!section || !cvs) return false;
     const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let renderer;
     try {
       if (typeof THREE === 'undefined') throw new Error('three mancante');
       renderer = new THREE.WebGLRenderer({ canvas: cvs, antialias: (window.devicePixelRatio || 1) < 2, powerPreference: 'high-performance' });
-    } catch (e) { section.classList.add('is-off'); return; }
+    } catch (e) { section.classList.add('is-off'); return false; }
     const mobile = window.matchMedia('(max-width: 760px)').matches;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 1.75));
     renderer.setClearColor(0x04061a);
@@ -389,7 +410,12 @@
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x070b1f, 0.032);
     const camera = new THREE.PerspectiveCamera(58, 1, 0.03, 120);
+    await fontsLoaded();
     const S = build(scene, mobile, team);
+    let loaded = 0;
+    onProgress(0);
+    await Promise.all(S.pending.map((p) => p.then(() => onProgress(++loaded / S.pending.length))));
+    onProgress(1);
     const capt = ((team && team.giocatrici) || []).find((g) => g.nome === S.hitterName);
     if (capt) ACTS[4].sub = `${capt.nome}${capt.capitano ? ' · capitana' : ''}`;
 
@@ -509,12 +535,14 @@
     const stop = () => { running = false; cancelAnimationFrame(raf); };
 
     resize();
-    window.addEventListener('resize', resize, { passive: true });
+    // ridimensionare il canvas lo svuota: si ridisegna subito, senza aspettare il prossimo fotogramma
+    window.addEventListener('resize', () => { resize(); render(current, performance.now()); }, { passive: true });
+    renderer.compile(scene, camera); // shader pronti subito: nessuno scatto al primo scroll
 
     if (REDUCED) { // un fotogramma fisso: il pallone sospeso prima della schiacciata
       render(0.74, 0);
       ui.intro.style.opacity = '1';
-      return;
+      return true;
     }
     readScroll(); current = target; render(current, 0);
     new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { rootMargin: '100px' }).observe(section);
@@ -523,6 +551,7 @@
       const r = section.getBoundingClientRect();
       if (r.bottom > 0 && r.top < window.innerHeight) start();
     });
+    return true;
   }
 
   window.ODVPov = { init };

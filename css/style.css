@@ -781,7 +781,6 @@ kbd { display: inline-block; margin: 0 1px; padding: 0 .35rem; border-radius: 4p
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .js [data-flicker] { opacity: 1; }
-  .js .loader { display: none; }
   .beam { transform: rotate(0); }
   .court-divider line { stroke-dashoffset: 0; }
 }
