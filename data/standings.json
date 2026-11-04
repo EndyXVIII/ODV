@@ -1,0 +1,17 @@
+{
+  "nota": "Fonte: FIPAV Veneto, Serie C femminile Girone B · aggiornata al 4 novembre 2026 · ODV Rio-Saonara è iscritta come \"Officina del Volley PD\"",
+  "squadre": [
+    {"squadra": "Aurora Vittinox-Lgi", "pt": 3, "g": 1, "v": 1, "p": 0, "sv": 3, "sp": 0},
+    {"squadra": "Vega Fusion Team U16", "pt": 3, "g": 1, "v": 1, "p": 0, "sv": 3, "sp": 0},
+    {"squadra": "Fastwindows VBP", "pt": 3, "g": 1, "v": 1, "p": 0, "sv": 3, "sp": 1},
+    {"squadra": "APV Team Volley 2007", "pt": 3, "g": 1, "v": 1, "p": 0, "sv": 3, "sp": 1},
+    {"squadra": "ODV Rio-Saonara", "pt": 2, "g": 1, "v": 1, "p": 0, "sv": 3, "sp": 2},
+    {"squadra": "Meccanica Ziello VPS", "pt": 2, "g": 1, "v": 1, "p": 0, "sv": 3, "sp": 2},
+    {"squadra": "Nonno Andrea Spresiano", "pt": 1, "g": 1, "v": 0, "p": 1, "sv": 2, "sp": 3},
+    {"squadra": "PLP Prefabbricati Grumolo", "pt": 1, "g": 1, "v": 0, "p": 1, "sv": 2, "sp": 3},
+    {"squadra": "Sogno Veneto Volley Piave", "pt": 0, "g": 1, "v": 0, "p": 1, "sv": 1, "sp": 3},
+    {"squadra": "Ciemme Impianti", "pt": 0, "g": 1, "v": 0, "p": 1, "sv": 1, "sp": 3},
+    {"squadra": "Comunello Volley Rosà", "pt": 0, "g": 1, "v": 0, "p": 1, "sv": 0, "sp": 3},
+    {"squadra": "Ormesani Volley Annia", "pt": 0, "g": 1, "v": 0, "p": 1, "sv": 0, "sp": 3}
+  ]
+}

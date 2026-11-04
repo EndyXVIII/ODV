@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="it" data-theme="notte">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODV Rio-Saonara · Serie C Regionale Femminile 2026/27</title>
+  <meta name="description" content="ODV Rio-Saonara, la Serie C Regionale femminile di Officina del Volley (Padova). Le eroine, le partite, i risultati e il Palasalmaso. Stagione 2026/27. Forza ODV!">
+  <meta name="theme-color" content="#070B1F">
+  <meta property="og:title" content="ODV Rio-Saonara · Neon Arena">
+  <meta property="og:description" content="Serie C Regionale Femminile · Stagione 2026/27. Uniti per la vittoria.">
+  <meta property="og:image" content="assets/logo-officina-del-volley-bianco.png">
+  <link rel="icon" href="assets/logo-odv.webp" type="image/webp">
+
+  <link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://www.fipavveneto.net" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Prima del paint: abilita gli stati iniziali JS e ripristina il tema scelto
+    document.documentElement.classList.add('js');
+    try { if (localStorage.getItem('odv-tema') === 'giorno') document.documentElement.dataset.theme = 'giorno'; } catch (e) {}
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "SportsTeam", "name": "ODV Rio-Saonara", "sport": "Pallavolo", "gender": "Female",
+   "memberOf": {"@type": "SportsOrganization", "name": "Officina del Volley"},
+   "location": {"@type": "Place", "name": "Palasport S. Salmaso", "address": {"@type": "PostalAddress", "streetAddress": "Via XI Febbraio", "addressLocality": "Villatora di Saonara", "addressRegion": "PD", "addressCountry": "IT"}},
+   "email": "info@officinadelvolley.it", "telephone": "+39 351 843 1799",
+   "sameAs": ["https://www.instagram.com/officinadip/", "https://www.instagram.com/officinadelvolley_pd/", "https://www.facebook.com/OfficinadelVolley"]}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Salta al contenuto</a>
+
+  <!-- ============ SVG SPRITE ============ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="ballClip"><circle cx="50" cy="50" r="47"/></clipPath>
+    </defs>
+    <symbol id="i-ball" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="47" fill="#FFD23F"/>
+      <g clip-path="url(#ballClip)" fill="#1B3A8C">
+        <path d="M50 50C46 30 58 10 82 4C64-2 44 0 34 6C30 24 36 40 50 50Z"/>
+        <path d="M50 50C46 30 58 10 82 4C64-2 44 0 34 6C30 24 36 40 50 50Z" transform="rotate(120 50 50)"/>
+        <path d="M50 50C46 30 58 10 82 4C64-2 44 0 34 6C30 24 36 40 50 50Z" transform="rotate(240 50 50)"/>
+      </g>
+      <g fill="none" stroke="#0b1640" stroke-width="1.6" stroke-opacity=".55" clip-path="url(#ballClip)">
+        <path d="M50 50C46 30 58 10 82 4"/><path d="M50 50C46 30 58 10 82 4" transform="rotate(120 50 50)"/><path d="M50 50C46 30 58 10 82 4" transform="rotate(240 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="47" fill="none" stroke="#0b1640" stroke-opacity=".5" stroke-width="2"/>
+      <ellipse cx="34" cy="30" rx="14" ry="8" fill="#fff" opacity=".35" transform="rotate(-30 34 30)"/>
+    </symbol>
+    <symbol id="i-palleggio" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="26" r="16"/><path d="M22 92V62c0-6 4-10 9-10s9 4 9 10v6"/><path d="M78 92V62c0-6-4-10-9-10s-9 4-9 10v6"/><path d="M31 52V44M40 56V46M60 56V46M69 52V44"/><path d="M50 4v6M30 10l4 5M70 10l-4 5"/></g></symbol>
+    <symbol id="i-opposto" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M58 4 22 56h24l-8 40 40-56H52z"/><path d="M14 20h12M10 34h10M78 66h12M82 80h8" stroke-linecap="round"/></g></symbol>
+    <symbol id="i-schiacciata" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M50 96c-20 0-32-14-32-30 0-14 9-22 14-34 3 10 8 14 12 15-2-14 4-30 16-43 0 16 6 24 12 32 6 8 10 16 10 28 0 18-12 32-32 32z"/><path d="M50 96c-9 0-15-7-15-15 0-9 7-13 9-21 4 6 9 8 11 14 2 4 6 8 6 14 0 5-5 8-11 8z"/></g></symbol>
+    <symbol id="i-centrale" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M8 40h84M8 60h84M8 80h84M8 20h84v72H8z"/><path d="M30 20v20M70 20v20M50 40v20M20 60v20M80 60v20M50 80v12M38 4l-6 14M62 4l6 14" stroke-linecap="round"/></g></symbol>
+    <symbol id="i-libero" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M50 4 86 18v28c0 24-16 40-36 50C30 86 14 70 14 46V18z"/><path d="M50 18 72 27v19c0 15-9 26-22 33-13-7-22-18-22-33V27z"/><path d="m40 48 7 7 14-15" stroke-linecap="round"/></g></symbol>
+    <symbol id="i-staff" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="10" width="68" height="84" rx="6"/><path d="M36 10V4h28v6M30 34h40M30 50h40M30 66h24"/><path d="m60 74 6 6 12-14"/></g></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8V6.5c0-.8.2-1.5 1.5-1.5H17V2h-2.5C11.6 2 10.6 3.8 10.6 6.3V8H8v3h2.6v11H14V11h2.6l.4-3z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></g></symbol>
+    <symbol id="i-silhouette" viewBox="0 0 200 250"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><circle cx="100" cy="58" r="26"/><path d="M84 46c4-14 30-16 36 2 6 0 10 6 8 12"/><path d="M126 52c10 2 14 14 8 26"/><path d="M60 250v-70c0-30 14-58 40-62 26 4 40 32 40 62v70"/><path d="M60 142 30 92M140 142l30-50"/><circle cx="172" cy="78" r="16"/><path d="M84 176h32M78 206h44"/></g></symbol>
+  </svg>
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__stage">
+      <div class="loader__board"><span class="loader__label">ODV</span><span class="loader__score" id="loaderScore">00</span><span class="loader__label">SET</span></div>
+      <div class="loader__ball" id="loaderBall"><svg viewBox="0 0 100 100"><use href="#i-ball"/></svg></div>
+      <div class="loader__line"></div>
+      <p class="loader__hint">Riscaldamento in corso…</p>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#home" aria-label="ODV Rio-Saonara, torna all'inizio">
+        <img src="assets/logo-odv.webp" width="44" height="44" alt="Logo Officina del Volley">
+        <span class="nav__word">ODV <em>RIO-SAONARA</em></span>
+      </a>
+      <nav class="nav__links" aria-label="Navigazione principale">
+        <ul>
+          <li><a href="#home" data-nav>Home</a></li>
+          <li><a href="#eroine" data-nav>Le Eroine</a></li>
+          <li><a href="#staff" data-nav>Staff</a></li>
+          <li><a href="#partite" data-nav>Partite</a></li>
+          <li><a href="#risultati" data-nav>Risultati</a></li>
+          <li><a href="#palasport" data-nav>Palasport</a></li>
+          <li><a href="#instagram" data-nav>Instagram</a></li>
+          <li><a href="#contatti" data-nav>Contatti</a></li>
+        </ul>
+        <span class="nav__ball" aria-hidden="true"></span>
+      </nav>
+      <button class="lights-toggle" id="lightsToggle" type="button" aria-pressed="false" title="Luci del palazzetto">
+        <span class="lights-toggle__bulb" aria-hidden="true"></span>
+        <span class="lights-toggle__text">Luci del palazzetto</span>
+      </button>
+      <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri il menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <nav aria-label="Menu mobile">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#eroine">Le Eroine</a></li>
+        <li><a href="#staff">Staff</a></li>
+        <li><a href="#partite">Partite</a></li>
+        <li><a href="#risultati">Risultati</a></li>
+        <li><a href="#palasport">Palasport</a></li>
+        <li><a href="#instagram">Instagram</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+    <p class="mobile-menu__foot">Forza ODV! 🖤🩷</p>
+  </div>
+
+  <main id="main">
+    <!-- ============ 3.2 HERO ============ -->
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero__sky" aria-hidden="true"></div>
+      <div class="hero__beams" aria-hidden="true"><span class="beam beam--1"></span><span class="beam beam--2"></span><span class="beam beam--3"></span></div>
+      <div class="hero__sign hero__sign--odv" data-depth="0.25" aria-hidden="true">ODV</div>
+      <div class="hero__sign hero__sign--rio" data-depth="0.5" aria-hidden="true">RIO-SAONARA</div>
+      <svg class="hero__city" id="heroCity" viewBox="0 0 1600 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+      <div class="hero__floor" aria-hidden="true"></div>
+      <canvas class="hero__rain" id="rain" aria-hidden="true"></canvas>
+
+      <div class="hero__ball" id="heroBall" aria-hidden="true">
+        <canvas id="ballCanvas"></canvas>
+        <svg class="hero__ball-fallback" viewBox="0 0 100 100"><use href="#i-ball"/></svg>
+      </div>
+
+      <div class="hero__content container">
+        <p class="eyebrow">Officina del Volley presenta</p>
+        <h1 class="hero__title neon" id="heroTitle" data-flicker>
+          <span class="hero__title-odv">ODV</span>
+          <span class="hero__title-rio">RIO-SAONARA</span>
+        </h1>
+        <p class="hero__sub">Serie C Regionale Femminile · Stagione 2026/27</p>
+        <p class="hero__tag">Uniti per la vittoria. <strong>Ogni punto è un film.</strong></p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#eroine" data-magnetic>Scopri le eroine <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="#partite" data-magnetic>Prossima partita</a>
+        </div>
+      </div>
+
+      <aside class="next-card holo" id="nextCard" aria-label="Prossima partita">
+        <div class="next-card__head"><span class="live-dot" aria-hidden="true"></span> PROSSIMA PARTITA</div>
+        <p class="next-card__comp" id="nextComp">—</p>
+        <p class="next-card__vs"><span>ODV</span> <em>vs</em> <span id="nextOpp">—</span></p>
+        <p class="next-card__meta" id="nextMeta">Calendario in caricamento…</p>
+        <div class="flipclock" id="flipclock" role="timer" aria-live="off">
+          <div class="flipclock__unit"><div class="flip" data-unit="d"></div><span>giorni</span></div>
+          <div class="flipclock__unit"><div class="flip" data-unit="h"></div><span>ore</span></div>
+          <div class="flipclock__unit"><div class="flip" data-unit="m"></div><span>min</span></div>
+          <div class="flipclock__unit"><div class="flip" data-unit="s"></div><span>sec</span></div>
+        </div>
+        <p class="next-card__last" id="nextLast" hidden></p>
+      </aside>
+
+      <a class="hero__scroll" href="#eroine" aria-label="Scorri alle eroine"><span></span></a>
+    </section>
+
+    <!-- ============ 3.3 MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__band marquee__band--a"><div class="marquee__track" data-dir="1"></div></div>
+      <div class="marquee__band marquee__band--b"><div class="marquee__track" data-dir="-1"></div></div>
+    </div>
+
+    <!-- ============ POV: SEI IL PALLONE (scena 3D guidata dallo scroll) ============ -->
+    <section class="pov" id="pov" aria-labelledby="povTitle">
+      <div class="pov__sticky">
+        <canvas class="pov__canvas" id="povCanvas" aria-hidden="true"></canvas>
+        <div class="pov__speed" aria-hidden="true"></div>
+        <div class="pov__vignette" aria-hidden="true"></div>
+        <div class="pov__flash" aria-hidden="true"></div>
+        <div class="pov__hud" aria-hidden="true">
+          <span class="pov__rec"><i></i> POV · LIVE</span>
+          <span class="pov__score">ODV <b id="povScoreH">24</b><em>–</em><b id="povScoreA">23</b> OSP</span>
+          <span class="pov__kmh"><b id="povKmh">0</b><small>km/h</small></span>
+        </div>
+        <div class="pov__intro" id="povIntro">
+          <p class="eyebrow">Scorri per giocare</p>
+          <h2 class="pov__title" id="povTitle">POV:<br>SEI IL PALLONE</h2>
+          <p class="pov__lead">Set point, 24–23. Un'azione intera, dalla battuta al punto. Tieniti forte.</p>
+          <span class="pov__scroll" aria-hidden="true"></span>
+        </div>
+        <p class="pov__act" id="povAct" aria-hidden="true"></p>
+        <p class="pov__call" id="povCall" aria-hidden="true"></p>
+        <div class="pov__bar" aria-hidden="true"><span id="povBar"></span></div>
+        <a class="pov__skip" href="#eroine">Salta l'azione ↓</a>
+      </div>
+    </section>
+
+    <!-- ============ 3.4 LE EROINE ============ -->
+    <section class="section mesh" id="eroine" aria-labelledby="eroineTitle">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Il cast della stagione</p>
+          <h2 class="neon neon--pink" id="eroineTitle" data-flicker>LE EROINE</h2>
+          <p class="section__lead">Quindici protagoniste, un solo copione: <strong>vincere insieme</strong>. Scegli la tua eroina.</p>
+        </header>
+
+        <div class="chips" role="group" aria-label="Filtra per ruolo">
+          <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Tutte</button>
+          <button class="chip" type="button" data-filter="Palleggiatrice" aria-pressed="false">Palleggiatrici</button>
+          <button class="chip" type="button" data-filter="Opposto" aria-pressed="false">Opposti</button>
+          <button class="chip" type="button" data-filter="Schiacciatrice" aria-pressed="false">Schiacciatrici</button>
+          <button class="chip" type="button" data-filter="Centrale" aria-pressed="false">Centrali</button>
+          <button class="chip" type="button" data-filter="Libero" aria-pressed="false">Liberi</button>
+        </div>
+
+        <div class="roster" id="roster"></div>
+
+        <!-- Rotazione -->
+        <div class="rotation" id="rotation">
+          <div class="rotation__text">
+            <p class="eyebrow">Lavagna tattica</p>
+            <h3 class="neon neon--blue" data-flicker>ROTAZIONE</h3>
+            <p>Sei posizioni, un giro d'orologio alla volta. Premi <strong>Ruota</strong> e guarda la squadra cambiare posto in senso orario, come dopo ogni cambio palla conquistato.</p>
+            <p class="rotation__libero" id="rotLibero"></p>
+            <button class="btn btn--primary" id="rotateBtn" type="button" data-magnetic>Ruota ↻</button>
+            <p class="rotation__count" aria-live="polite" id="rotCount">Rotazione 1 di 6</p>
+          </div>
+          <div class="court" id="court" aria-label="Metà campo vista dall'alto con le posizioni da P1 a P6">
+            <div class="court__net" aria-hidden="true"><span>RETE</span></div>
+            <div class="court__attack" aria-hidden="true"><span>linea dei 3 m</span></div>
+            <div class="court__slots">
+              <div class="slot" data-pos="4"><span class="slot__label">P4</span></div>
+              <div class="slot" data-pos="3"><span class="slot__label">P3</span></div>
+              <div class="slot" data-pos="2"><span class="slot__label">P2</span></div>
+              <div class="slot" data-pos="5"><span class="slot__label">P5</span></div>
+              <div class="slot" data-pos="6"><span class="slot__label">P6</span></div>
+              <div class="slot" data-pos="1"><span class="slot__label">P1</span><span class="slot__serve">battuta</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="court-divider" aria-hidden="true"><svg viewBox="0 0 1200 40" preserveAspectRatio="none"><line x1="0" y1="20" x2="1200" y2="20"/></svg><span>3 M · LINEA D'ATTACCO</span></div>
+
+    <!-- ============ 3.5 STAFF ============ -->
+    <section class="section" id="staff" aria-labelledby="staffTitle">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Dietro le quinte</p>
+          <h2 class="neon neon--blue" id="staffTitle" data-flicker>LO STAFF</h2>
+          <p class="section__lead">Registi, sceneggiatori e preparatori del nostro film.</p>
+        </header>
+        <div class="staff-row" id="staffRow"></div>
+      </div>
+    </section>
+
+    <!-- ============ 3.6 PARTITE ============ -->
+    <section class="partite" id="partite" aria-labelledby="partiteTitle">
+      <div class="partite__pin">
+        <div class="container partite__head">
+          <p class="eyebrow">In cartellone</p>
+          <h2 class="neon neon--pink" id="partiteTitle" data-flicker>LE PARTITE</h2>
+          <p class="section__lead">Ogni partita è una prima visione. Scorri la locandina.</p>
+          <div class="partite__bar">
+            <div class="chips chips--comp" role="group" aria-label="Filtra per competizione">
+              <button class="chip is-active" type="button" data-comp="all" aria-pressed="true">Tutte</button>
+              <button class="chip chip--serie-c" type="button" data-comp="Serie C" aria-pressed="false">Campionato · Serie C</button>
+              <button class="chip chip--coppa" type="button" data-comp="Coppa Veneto" aria-pressed="false">🏆 Coppa Veneto</button>
+            </div>
+            <p class="fipav-stamp" id="fipavStamp" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="posters-wrap">
+          <button class="posters__arrow posters__arrow--prev" id="postersPrev" type="button" aria-label="Partite precedenti" aria-controls="posters"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <div class="posters" id="posters" tabindex="0" role="region" aria-label="Locandine delle partite: scorri in orizzontale o usa le frecce">
+            <div class="posters__track" id="postersTrack"></div>
+          </div>
+          <button class="posters__arrow posters__arrow--next" id="postersNext" type="button" aria-label="Partite successive" aria-controls="posters"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="court-divider" aria-hidden="true"><svg viewBox="0 0 1200 40" preserveAspectRatio="none"><line x1="0" y1="20" x2="1200" y2="20"/></svg><span>CAMBIO CAMPO</span></div>
+
+    <!-- ============ 3.7 RISULTATI ============ -->
+    <section class="section mesh" id="risultati" aria-labelledby="risultatiTitle">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Tabellone · dati FIPAV Veneto</p>
+          <h2 class="neon neon--blue" id="risultatiTitle" data-flicker>RISULTATI &amp; CLASSIFICA</h2>
+        </header>
+
+        <div class="scoreboard holo" id="scoreboard">
+          <p class="scoreboard__comp" id="sbComp">Ultimo risultato</p>
+          <div class="scoreboard__main">
+            <div class="scoreboard__team"><span class="scoreboard__name" id="sbHome">ODV RIO-SAONARA</span></div>
+            <div class="scoreboard__digits">
+              <span class="led" id="sbH">0</span><span class="scoreboard__sep">:</span><span class="led" id="sbA">0</span>
+            </div>
+            <div class="scoreboard__team"><span class="scoreboard__name" id="sbAway">—</span></div>
+          </div>
+          <ol class="scoreboard__sets" id="sbSets" aria-label="Parziali dei set"></ol>
+          <p class="scoreboard__status" id="sbStatus"></p>
+        </div>
+
+        <div class="counters">
+          <div class="counter"><span class="counter__num" data-count="vittorie">0</span><span class="counter__label">vittorie</span></div>
+          <div class="counter"><span class="counter__num" data-count="setVinti">0</span><span class="counter__label">set vinti</span></div>
+          <div class="counter"><span class="counter__num" data-count="punti">0</span><span class="counter__label">punti in classifica</span></div>
+          <div class="counter"><span class="counter__num" data-count="puntiFatti">0</span><span class="counter__label">punti realizzati</span></div>
+        </div>
+
+        <div class="standings">
+          <h3 class="standings__title">Classifica Serie C · Girone B</h3>
+          <div class="standings__wrap">
+            <table class="standings__table">
+              <caption class="sr-only">Classifica del campionato di Serie C Regionale Femminile</caption>
+              <thead><tr><th scope="col">Pos</th><th scope="col" class="t-left">Squadra</th><th scope="col">Pt</th><th scope="col">G</th><th scope="col">V</th><th scope="col">P</th><th scope="col">SV</th><th scope="col">SP</th></tr></thead>
+              <tbody id="standingsBody"></tbody>
+            </table>
+          </div>
+          <p class="standings__note" id="standingsNote"></p>
+          <a class="btn btn--ghost" href="https://www.fipavveneto.net/mobile/risultati.asp?CampionatoId=92006" target="_blank" rel="noopener" data-magnetic>Risultati ufficiali FIPAV Veneto <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3.8 PALASPORT ============ -->
+    <section class="section palasport" id="palasport" aria-labelledby="palaTitle">
+      <div class="arena" aria-hidden="true">
+        <div class="arena__lights" data-depth="0.15"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="arena__crowd arena__crowd--back" data-depth="0.3"></div>
+        <div class="arena__crowd arena__crowd--front" data-depth="0.5"></div>
+        <div class="arena__court" data-depth="0.7"><span></span></div>
+      </div>
+      <div class="container palasport__grid">
+        <div class="palasport__info">
+          <p class="eyebrow">Il nostro palcoscenico</p>
+          <h2 class="neon neon--pink" id="palaTitle" data-flicker>PALASALMASO</h2>
+          <p class="palasport__addr"><svg aria-hidden="true"><use href="#i-pin"/></svg> <span id="palaAddr">Palasport S. Salmaso · Via XI Febbraio, Villatora di Saonara (PD)</span></p>
+          <p>Qui le luci si accendono, il pubblico si alza e a ogni partita in casa va in scena il nostro film. Porta la voce: in tribuna la settima in campo sei tu.</p>
+          <p>Alcune partite casalinghe si giocano al <strong>Comunale di Roncaglia</strong>, Via Sansovino 7, Ponte San Nicolò (PD): controlla la locandina.</p>
+          <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Palasport%20Salmaso%20Via%20XI%20Febbraio%20Villatora%20Saonara%20PD" target="_blank" rel="noopener" data-magnetic>Come arrivare <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="palasport__map holo">
+          <div class="map-consent" id="mapConsent" data-src="https://www.openstreetmap.org/export/embed.html?bbox=11.950%2C45.375%2C11.990%2C45.393&amp;layer=mapnik&amp;marker=45.3840%2C11.9699">
+            <svg aria-hidden="true"><use href="#i-pin"/></svg>
+            <p><strong>Mappa del Palasalmaso</strong><br>La mappa è fornita da OpenStreetMap: caricandola il tuo browser si collega ai loro server.</p>
+            <button class="btn btn--ghost" type="button" id="mapLoad">Mostra la mappa</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3.9 INSTAGRAM ============ -->
+    <section class="section mesh" id="instagram" aria-labelledby="igTitle">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <h2 class="neon neon--pink" id="igTitle" data-flicker>SEGUICI SU INSTAGRAM</h2>
+          <a class="ig-handle" href="https://www.instagram.com/officinadip/" target="_blank" rel="noopener">@officinadip</a>
+          <p class="ig-caption">Pagina non ufficiale della Serie C ODV 🖤🩷</p>
+        </header>
+        <div class="ig-grid" id="igGrid"></div>
+        <div class="ig-official">
+          <span>Profili ufficiali del club:</span>
+          <a href="https://www.instagram.com/officinadelvolley_pd/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg> @officinadelvolley_pd</a>
+          <a href="https://www.facebook.com/OfficinadelVolley" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-facebook"/></svg> Officina del Volley</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3.10 PARTNER ============ -->
+    <section class="section partner" id="partner" aria-labelledby="partnerTitle">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <p class="eyebrow">Chi gioca con noi</p>
+          <h2 class="neon neon--blue" id="partnerTitle" data-flicker>PARTNER</h2>
+        </header>
+      </div>
+      <div class="logos" aria-label="Sponsor">
+        <div class="logos__track" id="logosTrack"></div>
+      </div>
+      <div class="container clubs">
+        <article class="club-card holo">
+          <h3>Rio Volley</h3>
+          <p><svg aria-hidden="true"><use href="#i-pin"/></svg> Via Sansovino 7, 35020 Ponte San Nicolò (PD)</p>
+          <p><svg aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:info@riovolley.net">info@riovolley.net</a></p>
+        </article>
+        <article class="club-card holo">
+          <h3>Thermal Volley</h3>
+          <p><svg aria-hidden="true"><use href="#i-pin"/></svg> Via Vittorino da Feltre 1, 35031 Abano Terme (PD)</p>
+          <p><svg aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:info.thermalvolley@gmail.com">info.thermalvolley@gmail.com</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 3.11 CONTATTI ============ -->
+    <section class="section mesh" id="contatti" aria-labelledby="contTitle">
+      <div class="container contatti">
+        <div class="contatti__info">
+          <p class="eyebrow">Time-out</p>
+          <h2 class="neon neon--pink" id="contTitle" data-flicker>CONTATTI</h2>
+          <p class="section__lead">Vuoi giocare con noi, diventare partner o semplicemente fare il tifo? Scrivici: rispondiamo più veloci di una fast.</p>
+          <ul class="contatti__list">
+            <li><svg aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:info@officinadelvolley.it">info@officinadelvolley.it</a></li>
+            <li><svg aria-hidden="true"><use href="#i-phone"/></svg> <a href="tel:+393518431799">+39 351 843 1799</a></li>
+          </ul>
+        </div>
+        <form class="form holo" id="contactForm" novalidate>
+          <div class="form__field">
+            <label for="fNome">Nome</label>
+            <input id="fNome" name="nome" type="text" autocomplete="name" required minlength="2" aria-describedby="eNome">
+            <span class="form__err" id="eNome" aria-live="polite"></span>
+          </div>
+          <div class="form__field">
+            <label for="fEmail">Email</label>
+            <input id="fEmail" name="email" type="email" autocomplete="email" required aria-describedby="eEmail">
+            <span class="form__err" id="eEmail" aria-live="polite"></span>
+          </div>
+          <div class="form__field">
+            <label for="fMsg">Messaggio</label>
+            <textarea id="fMsg" name="messaggio" rows="5" required minlength="10" aria-describedby="eMsg"></textarea>
+            <span class="form__err" id="eMsg" aria-live="polite"></span>
+          </div>
+          <div class="form__field form__field--check">
+            <label class="check" for="fPrivacy">
+              <input id="fPrivacy" name="privacy" type="checkbox" required aria-describedby="ePrivacy">
+              <span>Ho letto l'<a href="https://www.iubenda.com/privacy-policy/41678074" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta.</span>
+            </label>
+            <span class="form__err" id="ePrivacy" aria-live="polite"></span>
+          </div>
+          <button class="btn btn--primary" type="submit" data-magnetic>Invia il messaggio <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <div class="form__success" id="formSuccess" hidden>
+            <svg class="net-anim" viewBox="0 0 320 160" aria-hidden="true">
+              <line class="net-anim__floor" x1="10" y1="150" x2="310" y2="150"/>
+              <rect class="net-anim__net" x="157" y="70" width="6" height="80"/>
+              <line class="net-anim__band" x1="150" y1="70" x2="170" y2="70"/>
+              <g class="net-anim__ball"><use href="#i-ball" x="-11" y="-11" width="22" height="22"/></g>
+              <text class="net-anim__in" x="250" y="120">IN!</text>
+            </svg>
+            <p role="status" id="formStatus">Palla dentro! Si è aperto il tuo programma di posta: premi invio e il messaggio è nostro.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img src="assets/logo-odv.webp" width="72" height="72" alt="Logo Officina del Volley" loading="lazy">
+        <p class="neon neon--pink footer__word">ODV RIO-SAONARA</p>
+        <p>Uniti per la vittoria. Forza ODV!</p>
+      </div>
+      <nav aria-label="Navigazione nel footer">
+        <ul class="footer__nav">
+          <li><a href="#home">Home</a></li><li><a href="#eroine">Le Eroine</a></li><li><a href="#staff">Staff</a></li><li><a href="#partite">Partite</a></li>
+          <li><a href="#risultati">Risultati</a></li><li><a href="#palasport">Palasport</a></li><li><a href="#instagram">Instagram</a></li><li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </nav>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/officinadip/" target="_blank" rel="noopener" aria-label="Instagram @officinadip"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="https://www.instagram.com/officinadelvolley_pd/" target="_blank" rel="noopener" aria-label="Instagram ufficiale Officina del Volley"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="https://www.facebook.com/OfficinadelVolley" target="_blank" rel="noopener" aria-label="Facebook Officina del Volley"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
+      </div>
+    </div>
+    <div class="container footer__legal">
+      <p>© 2026 Officina del Volley</p>
+      <p><a href="https://www.iubenda.com/privacy-policy/41678074" target="_blank" rel="noopener">Privacy Policy</a> · <a href="https://www.iubenda.com/privacy-policy/41678074/cookie-policy" target="_blank" rel="noopener">Cookie Policy</a></p>
+      <p class="footer__egg">Psst… digita <kbd>A</kbd><kbd>C</kbd><kbd>E</kbd></p>
+    </div>
+    <div class="footer__endline" aria-hidden="true"></div>
+  </footer>
+
+  <!-- ============ CHARACTER SELECT MODAL ============ -->
+  <div class="select" id="selectModal" role="dialog" aria-modal="true" aria-labelledby="selName" hidden>
+    <div class="select__bg" aria-hidden="true"></div>
+    <div class="select__inner">
+      <p class="select__top">SELEZIONA LA TUA EROINA</p>
+      <div class="select__art" id="selArt"></div>
+      <div class="select__info">
+        <p class="select__role" id="selRole"></p>
+        <h2 class="select__name" id="selName"></h2>
+        <p class="select__power" id="selPower"></p>
+        <p class="select__dedica" id="selDedica" hidden></p>
+        <p class="select__ready">PRONTA AL SERVIZIO ▸</p>
+      </div>
+      <button class="select__arrow select__arrow--prev" id="selPrev" type="button" aria-label="Eroina precedente">‹</button>
+      <button class="select__arrow select__arrow--next" id="selNext" type="button" aria-label="Eroina successiva">›</button>
+      <div class="select__thumbs" id="selThumbs" role="list"></div>
+      <button class="select__close" id="selClose" type="button" aria-label="Chiudi la scheda">✕</button>
+    </div>
+  </div>
+
+  <div class="ace-banner" id="aceBanner" aria-hidden="true">ACE!</div>
+  <div class="sr-only" aria-live="assertive" id="aceLive"></div>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/Flip.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="vendor/three.min.js" defer></script>
+  <script src="js/fipav.js" defer></script>
+  <script src="js/pov.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

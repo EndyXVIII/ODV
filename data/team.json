@@ -1,0 +1,35 @@
+{
+  "nome": "ODV Rio-Saonara",
+  "club": "Officina del Volley",
+  "campionato": "Serie C Regionale Femminile",
+  "stagione": "2026/27",
+  "palasport": "Palasalmaso",
+  "indirizzo": "Palasport S. Salmaso · Via XI Febbraio, Villatora di Saonara (PD)",
+  "email": "info@officinadelvolley.it",
+  "telefono": "+39 351 843 1799",
+  "staff": [
+    {"ruolo": "Head Coach", "nome": "Davide Cavinato", "superpotere": "Legge la partita tre azioni prima."},
+    {"ruolo": "Secondo allenatore", "nome": "Piero Vittadello", "superpotere": "Il regista dietro ogni poster."},
+    {"ruolo": "Preparatore atletico", "nome": "Alessandro Sampieri", "superpotere": "Trasforma la fatica in salto."},
+    {"ruolo": "Team Manager", "nome": "Giorgia Lorenzi", "superpotere": "Niente sfugge alla sua agenda."}
+  ],
+  "giocatrici": [
+    {"nome": "Laura Miazzi", "ruolo": "Palleggiatrice", "superpotere": "Mani di velluto, alzate di platino."},
+    {"nome": "Alessia Lorenzi", "ruolo": "Palleggiatrice", "superpotere": "Vede corridoi dove gli altri vedono muri."},
+    {"nome": "Mame Coumba Seck", "ruolo": "Opposto", "superpotere": "Colpi che arrivano prima del suono."},
+    {"nome": "Elisa Vanzato", "ruolo": "Opposto", "superpotere": "Diagonale stretta, sentenza definitiva."},
+    {"nome": "Virginia Zangrossi", "ruolo": "Opposto", "superpotere": "Salto infinito, braccio a frusta."},
+    {"nome": "Elisa Benetazzo", "ruolo": "Schiacciatrice", "superpotere": "Riceve, rigira, colpisce. Ripete."},
+    {"nome": "Beatrice Marcato", "ruolo": "Schiacciatrice", "superpotere": "Pipe a velocità luce."},
+    {"nome": "Arianna Ponchio", "ruolo": "Schiacciatrice", "superpotere": "Trova le mani del muro e le usa."},
+    {"nome": "Sandy Marini", "ruolo": "Schiacciatrice", "capitano": true, "superpotere": "Fascia al braccio e fuoco negli occhi: quando la partita si fa dura, alza la voce e la squadra la segue.", "dedica": "Al riconoscimento, prima di ogni partita, la sua voce copre tutto il palazzetto:", "grido": "ANDIAMOO!!!!!!!!"},
+    {"nome": "Emily Fassina", "ruolo": "Centrale", "superpotere": "Primo tempo più veloce del pensiero."},
+    {"nome": "Sara Vio", "ruolo": "Centrale", "superpotere": "Muro a tre braccia (giura che sono due)."},
+    {"nome": "Martina Erba", "ruolo": "Centrale", "superpotere": "Dove salta lei, la palla non passa."},
+    {"nome": "Aurora Viganò", "ruolo": "Centrale", "superpotere": "Fast in fuga, avversarie in tilt."},
+    {"nome": "Ilenia Quiriti", "ruolo": "Libero", "superpotere": "Nessuna palla è persa finché c'è lei."},
+    {"nome": "Lisa Pierangelo", "ruolo": "Libero", "superpotere": "Ricezione perfetta, sorriso incluso."}
+  ],
+  "rotazione": ["Laura Miazzi", "Elisa Benetazzo", "Emily Fassina", "Mame Coumba Seck", "Sandy Marini", "Sara Vio"],
+  "liberoInCampo": "Ilenia Quiriti"
+}
